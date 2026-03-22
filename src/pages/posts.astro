@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Posts — Brendan Bennett">
+  <h1>Posts</h1>
+  <p class="intro">Occasional writing on things I find interesting.</p>
+
+  <ul class="post-list">
+    <li>
+      <span class="date">2026 · 03</span>
+      <span class="title">On Starting a Personal Site</span>
+    </li>
+    <li>
+      <span class="date">2026 · 02</span>
+      <span class="title">Notes on Reproducible Research</span>
+    </li>
+    <li>
+      <span class="date">2026 · 01</span>
+      <span class="title">Three Books That Changed How I Think</span>
+    </li>
+  </ul>
+</Base>
+
+<style>
+  .intro {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+
+  .post-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .post-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 1.25rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .post-list li:last-child {
+    border-bottom: none;
+  }
+
+  .date {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    letter-spacing: 0.05em;
+  }
+
+  .title {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    color: var(--text);
+  }
+</style>

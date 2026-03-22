@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Research — Brendan Bennett">
+  <h1>Research</h1>
+  <p class="intro">A selection of ongoing and past research interests.</p>
+
+  <article class="entry">
+    <h2>Computational Approaches to Complex Systems</h2>
+    <p>
+      Exploring how computational models can help us understand emergent
+      behaviour in large-scale systems. This work combines simulation,
+      statistical analysis, and theoretical frameworks to uncover patterns
+      that aren't visible at smaller scales.
+    </p>
+  </article>
+
+  <article class="entry">
+    <h2>Data-Driven Methods in the Sciences</h2>
+    <p>
+      Investigating the application of modern data analysis techniques to
+      scientific problems. Interested in how we can extract meaningful
+      signal from noisy, high-dimensional datasets while maintaining
+      rigorous standards of evidence.
+    </p>
+  </article>
+
+  <article class="entry">
+    <h2>Open Problems &amp; Future Directions</h2>
+    <p>
+      Always looking for new questions worth asking. Current interests
+      include the intersection of machine learning with traditional
+      scientific methodology, reproducibility in computational research,
+      and tools for collaborative knowledge work.
+    </p>
+  </article>
+</Base>
+
+<style>
+  .intro {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+
+  .entry {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .entry:last-child {
+    border-bottom: none;
+  }
+
+  .entry h2 {
+    margin-top: 0;
+    font-size: 1.25rem;
+  }
+</style>
