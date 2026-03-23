@@ -1,5 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
 <Base title="Posts — Brendan Bennett">
@@ -7,18 +11,18 @@ import Base from '../layouts/Base.astro';
   <p class="intro">Occasional writing on things I find interesting.</p>
 
   <ul class="post-list">
-    <li>
-      <span class="date">2026 · 03</span>
-      <span class="title">On Starting a Personal Site</span>
-    </li>
-    <li>
-      <span class="date">2026 · 02</span>
-      <span class="title">Notes on Reproducible Research</span>
-    </li>
-    <li>
-      <span class="date">2026 · 01</span>
-      <span class="title">Three Books That Changed How I Think</span>
-    </li>
+    {posts.map((post) => {
+      const d = post.data.date;
+      const dateStr = `${d.getFullYear()} · ${String(d.getMonth() + 1).padStart(2, '0')}`;
+      return (
+        <li>
+          <a href={`/posts/${post.id}`}>
+            <span class="date">{dateStr}</span>
+            <span class="title">{post.data.title}</span>
+          </a>
+        </li>
+      );
+    })}
   </ul>
 </Base>
 
@@ -37,16 +41,22 @@ import Base from '../layouts/Base.astro';
     gap: 0;
   }
 
-  .post-list li {
+  .post-list li a {
     display: flex;
     align-items: baseline;
     gap: 1.25rem;
     padding: 1rem 0;
     border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    transition: color 0.15s ease;
   }
 
-  .post-list li:last-child {
+  .post-list li:last-child a {
     border-bottom: none;
+  }
+
+  .post-list li a:hover .title {
+    color: var(--accent);
   }
 
   .date {
@@ -61,5 +71,6 @@ import Base from '../layouts/Base.astro';
     font-family: var(--font-serif);
     font-size: 1.05rem;
     color: var(--text);
+    transition: color 0.15s ease;
   }
 </style>
